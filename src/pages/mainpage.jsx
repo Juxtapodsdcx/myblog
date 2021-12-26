@@ -1,7 +1,7 @@
 
 import { Carousel } from 'antd';
 import React from 'react';
-import  styles from "./styles.less";
+import  styles from "./styles.css";
 
 import { Row,Col,Divider } from 'antd';
 
@@ -17,11 +17,12 @@ import { Row,Col,Divider } from 'antd';
   //   color: "red"
   // }
   
+  // console.log(styles);
   return (
     <div>
-      <h1 className={styles.hei}>xxxx</h1>
+ 
       {/* dotPosition="left" */}
-      <Carousel autoplay className={styles.Lunbo1}>
+      <Carousel autoplay >
         <div>
           <h3 className={contentStyle}>内容</h3>
         </div>
