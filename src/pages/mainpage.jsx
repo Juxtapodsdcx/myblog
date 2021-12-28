@@ -1,13 +1,19 @@
 
-import { Carousel } from 'antd';
+import { Carousel ,Card} from 'antd';
 import React from 'react';
-import  styles from "./styles.css";
+// import  styles from "./styles.css";
+import  styles from "./styles.less";
+// import "./styles.less";
 
-import { Row,Col,Divider } from 'antd';
+
+// import 'antd/dist/antd.css';
+
+// import { Row,Col,Divider } from 'antd';
 
  const Lunbo =()=>{
+ 
   const contentStyle = {
-    height: '1600px',
+    height: '160px',
     color: '#fff',
     lineHeight: '160px',
     textAlign: 'center',
@@ -19,9 +25,21 @@ import { Row,Col,Divider } from 'antd';
   
   // console.log(styles);
   return (
+   
     <div>
- 
-      {/* dotPosition="left" */}
+       {/* <div className={styles.hei}> 
+    cccc
+       </div> */}
+        <Card title="Default size card" extra={<a href="#">More</a>} style={{ width: 300 }}>
+      <p>Card content</p>
+      <p>Card content</p>
+      <p>Card content</p>
+    </Card>
+    <Card size="small" title="Small size card" extra={<a href="#">More</a>} style={{ width: 300 }}>
+      <p>Card content</p>
+      <p>Card content</p>
+      <p>Card content</p>
+    </Card>
       <Carousel autoplay >
         <div>
           <h3 className={contentStyle}>内容</h3>
@@ -39,12 +57,8 @@ import { Row,Col,Divider } from 'antd';
     
      
 
-    
-
+  
     </div>
-     
- 
-    
      
     )
   

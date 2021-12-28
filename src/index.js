@@ -1,19 +1,27 @@
+import 'antd/dist/antd.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import 'antd/dist/antd.css';
 
-import styles from './App.css';
+import { Button } from 'antd';
+import styles from "./App.css"
 
-import Lunbo from "./pages/mainpage"
-import { Divider } from 'antd';
+// import Lunbo from "./pages/mainpage"
 
 ReactDOM.render(
     // <Lunbo />
-    // <App></App>
-    <div className={styles.App}>
+    <>
+    <div className={styles.color}>
       xxx
     </div>
+
+    <Button type={styles.primary}>Primary Button</Button>
+    <Button>Default Button</Button>
+    <Button type="dashed">Dashed Button</Button>
+    <br />
+    <Button type="text">Text Button</Button>
+    <Button type="link">Link Button</Button>
+    </>
 ,
   document.getElementById('root')
 );
