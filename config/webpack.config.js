@@ -479,7 +479,6 @@ module.exports = function (webpackEnv) {
                 sourceMap: isEnvProduction
                   ? shouldUseSourceMap
                   : isEnvDevelopment,
-                modules:true
               }),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
@@ -496,10 +495,11 @@ module.exports = function (webpackEnv) {
                 sourceMap: isEnvProduction
                   ? shouldUseSourceMap
                   : isEnvDevelopment,
-                modules: {
-                  mode: 'local',
-                  getLocalIdent: getCSSModuleLocalIdent,
-                },
+                modules:true
+                // {
+                //   mode: 'local',
+                //   getLocalIdent: getCSSModuleLocalIdent,
+                // },
               }),
             },
             // Opt-in support for SASS (using .scss or .sass extensions).
@@ -512,7 +512,6 @@ module.exports = function (webpackEnv) {
               {
                   importLoaders: 2,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
-                  modules: true,
               },
               'less-loader'
               ),
@@ -524,9 +523,11 @@ module.exports = function (webpackEnv) {
               {
                   importLoaders: 2,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
-                  modules: {
-                  getLocalIdent: getCSSModuleLocalIdent,
-                  },
+                  // modules: {
+                  // getLocalIdent: getCSSModuleLocalIdent,
+                  // },
+                  modules: true
+
               },
               'less-loader'
               ),
