@@ -7,6 +7,8 @@ import Game from "./pages/gameRecommand/game"
 import About from "./pages/about/about"
 import styles from "./styles.module.less"
 import Idol from "./pages/idols/idol"
+import Movie from "./pages/movieRecomand/movie"
+
 
 // import Routers from './pages/routerConfig';
 import { Button,Descriptions } from 'antd';
@@ -41,7 +43,7 @@ ReactDOM.render(
    <Link to="/game">游戏推荐</Link>
      </Menu.Item>
    <Menu.Item key="3">
-   <Link to="/mainpage">电影推荐</Link>
+   <Link to="/movies">电影推荐</Link>
      </Menu.Item>
    <Menu.Item key="4">
    <Link to="/mainpage">动漫推荐</Link>
@@ -95,6 +97,8 @@ ReactDOM.render(
             <Route path="/" element={<Mainpage />} />
             <Route path="/Mainpage" element={<Mainpage />} />
             <Route path="/game" element={<Game />} />
+            <Route path="/movies" element={<Movie />} />
+
 
 
 
