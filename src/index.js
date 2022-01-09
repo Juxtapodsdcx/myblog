@@ -3,11 +3,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Link,Routes,Route,BrowserRouter} from "react-router-dom"
 import Mainpage from "./pages/mainpage/mainpage"
-import Game from "./pages/gameRecommand/game"
+import Game ,{GameRoute} from "./pages/gameRecommand/game"
 import About from "./pages/about/about"
 import styles from "./styles.module.less"
 import Idol from "./pages/idols/idol"
 import Movie from "./pages/movieRecomand/movie"
+
 
 
 // import Routers from './pages/routerConfig';
@@ -20,6 +21,8 @@ const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 
 const ReactMarkdown = require('react-markdown')
+// console.log(Tuili);
+
 
 
 
@@ -45,9 +48,6 @@ ReactDOM.render(
    <Menu.Item key="3">
    <Link to="/movies">电影推荐</Link>
      </Menu.Item>
-   <Menu.Item key="4">
-   <Link to="/mainpage">动漫推荐</Link>
-     </Menu.Item>
    <Menu.Item key="5">
    <Link to="/idol">安利人物推荐</Link>
      </Menu.Item>
@@ -69,21 +69,12 @@ ReactDOM.render(
 此网站立志于安利有意思的番🎨，爱豆以及电影推荐🎬，个人向较强，希望大家看的开心❤
 </Col>
       </Row>
-    {/* className="header" */}
-      {/* <div className="logo" /> */}
-     
-   
-      
-
-      {/* <Descriptions.Item >
-        此网站立志于安利有意思的番，优质爱豆以及电影推荐，个人向较强，希望大家看的开心
-        </Descriptions.Item> */}
+ 
     </Header>
     
 
    
     <Content  style={{ padding: '0 50px' }}>
-      <div></div>
       {/* <Breadcrumb style={{ margin: '16px 0' }}>
         <Breadcrumb.Item>Home</Breadcrumb.Item>
         <Breadcrumb.Item>List</Breadcrumb.Item>
@@ -96,34 +87,23 @@ ReactDOM.render(
          <Routes>
             <Route path="/" element={<Mainpage />} />
             <Route path="/Mainpage" element={<Mainpage />} />
-            <Route path="/game" element={<Game />} />
+            <Route path="/game/*" element={<Game />} />       
+    
             <Route path="/movies" element={<Movie />} />
 
 
 
 
-            <Route path="/idol" element={<Idol />} />
+            <Route path="/idol/*" element={<Idol />} />
             <Route path="/about" element={<About />} />
 
     
-          </Routes>
-       
-    
-          {/* <Mainpage /> */}
-          
-        
-          
-          
+          </Routes>         
           
           
           </Content>
       </Layout>
     </Content>
-
-
-
-
-
 
 
 
