@@ -13,6 +13,8 @@ import zhiyuSrc from "./zhiyu.md"
 import ReactMarkdown from 'react-markdown';
 import { Typography } from 'antd';
 
+
+
 const { Title } = Typography;
 
 const { Step } = Steps;
@@ -37,7 +39,7 @@ const Tuili=()=>{
 
   return(
     <Row>
-    <Col span={8} className={styles.Carousel}>
+  <Col md={8} xs={0} className={styles.Carousel}>
 
       <div>
         <div>
@@ -45,15 +47,17 @@ const Tuili=()=>{
           <div>
             <Image
               src="/img/Game/dark.jpg"
-              height={250}
-              width={440}
+              className={styles.image}
+             
+      
             />
           </div>
           <div>
             <Image
               src="/img/Game/dark1.jpg"
-              height={250}
-              width={440}
+              className={styles.image}
+          
+           
             />
           </div>
 
@@ -69,37 +73,37 @@ const Tuili=()=>{
           <div>
             <Image
               src="/img/Game/xiuhu1.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
           <div>
             <Image
               src="/img/Game/xiuhu2.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
           <div>
             <Image
               src="/img/Game/xiuhu3.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
           <div>
             <Image
               src="/img/Game/xiuhu4.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
 
             />
           </div>
           <div>
             <Image
               src="/img/Game/xiuhu5.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
 
@@ -115,22 +119,22 @@ const Tuili=()=>{
           <div>
             <Image
               src="/img/Game/huazhong.png"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
           <div>
             <Image
               src="/img/Game/huazhong1.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
           <div>
             <Image
               src="/img/Game/huazhong2.jpg"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
  
@@ -156,13 +160,8 @@ const Tuili=()=>{
     </Col>
 
 
-
-
-
-
-
     {/* <Divider orientation="left">Left Text</Divider> */}
-    <Col span={16} style={{ padding: 30 }}>
+    <Col md={16} xs={24} style={{ padding: 30 }}>
       {tuili ? <ReactMarkdown children={tuili} /> : <Skeleton active />}
       {/* { yule?<ReactMarkdown children={yule} />:<div>loading</div>}
     { zhiyu?<ReactMarkdown children={zhiyu} />:<div>loading</div>} */}
@@ -192,7 +191,7 @@ const Yule=()=>{
 
   return(
     <Row>
-    <Col span={8} className={styles.Carousel}>
+    <Col md={8} xs={0} className={styles.Carousel}>
 
       <div>
         <div>
@@ -200,29 +199,29 @@ const Yule=()=>{
           <div>
             <Image
               src="/img/Game/1.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
           <div>
             <Image
               src="/img/Game/2.jpg"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
           <div>
             <Image
               src="/img/Game/3.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
           <div>
             <Image
               src="/img/Game/4.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
 
@@ -241,8 +240,8 @@ const Yule=()=>{
           <div>
             <Image
               src="/img/Game/feiche.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
    
@@ -269,13 +268,8 @@ const Yule=()=>{
     </Col>
 
 
-
-
-
-
-
     {/* <Divider orientation="left">Left Text</Divider> */}
-    <Col span={16} style={{ padding: 30 }}>
+    <Col md={16} xs={24} style={{ padding: 30 }}>
       {/* {tuili ? <ReactMarkdown children={tuili} /> : <Skeleton active />} */}
       { yule?<ReactMarkdown children={yule} />:<div>loading</div>}
     {/* { zhiyu?<ReactMarkdown children={zhiyu} />:<div>loading</div>} */}
@@ -304,7 +298,7 @@ const Zhiyu=()=>{
 
   return(
     <Row>
-    <Col span={8} className={styles.Carousel}>
+    <Col md={8} xs={0} className={styles.Carousel} >
 
       <div>
         <div>
@@ -312,138 +306,46 @@ const Zhiyu=()=>{
           <div>
             <Image
               src="/img/Game/zhiyu.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
           <div>
             <Image
               src="/img/Game/zhiyu1.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
           <div>
             <Image
               src="/img/Game/zhiyu2.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
           <div>
             <Image
               src="/img/Game/zhiyu3.webp"
-              height={250}
-              width={440}
+              className={styles.image}
+
             />
           </div>
 
         </Carousel>
-        {/* <div style={{ textAlign: "center" }}>
-          <Title level={5}>黑暗沼泽庄园</Title>
-        </div> */}
+      
         </div>
    
-
-        {/* <div>
-        <Carousel autoplay className={styles.Carousel}>
-          <div>
-            <Image
-              src="/img/Game/xiuhu1.webp"
-              height={250}
-              width={440}
-            />
-          </div>
-          <div>
-            <Image
-              src="/img/Game/xiuhu2.webp"
-              height={250}
-              width={440}
-            />
-          </div>
-          <div>
-            <Image
-              src="/img/Game/xiuhu3.webp"
-              height={250}
-              width={440}
-            />
-          </div>
-          <div>
-            <Image
-              src="/img/Game/xiuhu4.webp"
-              height={250}
-              width={440}
-
-            />
-          </div>
-          <div>
-            <Image
-              src="/img/Game/xiuhu5.webp"
-              height={250}
-              width={440}
-            />
-          </div>
-
-        </Carousel>
-        <div style={{ textAlign: "center" }}>
-          <Title level={5}>锈湖/逃离方块</Title>
-        </div>
-        </div>
-
-
-        <div>
-        <Carousel autoplay className={styles.Carousel}>
-          <div>
-            <Image
-              src="/img/Game/huazhong.png"
-              height={250}
-              width={440}
-            />
-          </div>
-          <div>
-            <Image
-              src="/img/Game/huazhong1.webp"
-              height={250}
-              width={440}
-            />
-          </div>
-          <div>
-            <Image
-              src="/img/Game/huazhong2.jpg"
-              height={250}
-              width={440}
-            />
-          </div>
- 
-
-        </Carousel>
-        <div style={{ textAlign: "center" }}>
-          <Title level={5}>画中世界</Title>
-        </div>
-        </div> */}
-
-
-
-
-
 
 
 
       </div>
 
-
-
-
     </Col>
 
 
-
-
-
-
-
     {/* <Divider orientation="left">Left Text</Divider> */}
-    <Col span={16} style={{ padding: 30 }}>
+    <Col md={16} xs={24} style={{ padding: 30 }}>
       {/* {tuili ? <ReactMarkdown children={tuili} /> : <Skeleton active />} */}
       {/* { yule?<ReactMarkdown children={yule} />:<div>loading</div>} */}
     { zhiyu?<ReactMarkdown children={zhiyu} />:<div>loading</div>}
@@ -459,7 +361,9 @@ const Zhiyu=()=>{
 }
 
 const Game = () => {
-
+useEffect(()=>{
+  document.title="游戏推荐"
+})
 
 
 
@@ -479,11 +383,6 @@ const Game = () => {
           ]}
         >
 
-        
-     
-
-
-
 
           <Descriptions size="small" column={2}>
 
@@ -493,15 +392,6 @@ const Game = () => {
 
               对了，推荐一个app：应用汇（强推❤❤❤❤❤ ）很多游戏在这个app上几乎都能下载到，而且这里面很多游戏都不要钱（白嫖党的快乐）
             </Descriptions.Item>
-
-
-
-            {/* <Descriptions.Item >
-        <button className={styles.btn}>
-        点击进入博客
-      </button>
-        </Descriptions.Item> */}
-
 
           </Descriptions>
 
@@ -538,33 +428,18 @@ const Game = () => {
 
      <Route path="/zhiyu" element={<Zhiyu></Zhiyu>}></Route>
 
-
-
-     </Routes>
-
-       
+     </Routes>  
        
       </Card > 
-
-
 
 
     </div >
 
 
 
-
-
   )
 
 }
-// export const GameRoute=()=>{
-//   return(
-  
-//     <Route path="/tuili" element={<Tuili />}></Route>
 
-//   )
-// }
 export default Game;
-//  Tuili;
-// export TuiLi
+

@@ -1,30 +1,12 @@
+@import url(../../styles.module.less);
 .siteHeader{
     padding: 24px;
     background-color: #f5f5f5;
-    .name{
-        font-size: 20px;
-    }
+    // .name{
+    //     // font-size: 20px;
+    // }
   }
 
-
-  .bigstar50, .bigstar45, .bigstar40, .bigstar35, .bigstar30, .bigstar25, .bigstar20, .bigstar15, .bigstar10, .bigstar05, .bigstar00 {
-    display: inline-block;
-    *display: inline;
-    zoom: 1;
-    background: url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) no-repeat;
-    background: -webkit-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 1x, url(https://img3.doubanio.com/f/shire/ee7f53d76c3f8ed4991bdbafdb9b2c90c0aedfef/pics/rating_icons/ic_rating_m@2x.png) 2x) no-repeat;
-    background: -moz-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 1x, url(https://img3.doubanio.com/f/shire/ee7f53d76c3f8ed4991bdbafdb9b2c90c0aedfef/pics/rating_icons/ic_rating_m@2x.png) 2x) no-repeat;
-    background: -o-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 1x, url(https://img3.doubanio.com/f/shire/ee7f53d76c3f8ed4991bdbafdb9b2c90c0aedfef/pics/rating_icons/ic_rating_m@2x.png) 2x) no-repeat;
-    background: -ms-image-set(url(https://img3.doubanio.com/f/shire/680a4bc4c384199245b080c7104da5be8ed717d3/pics/rating_icons/ic_rating_m.png) 1x, url(https://img3.doubanio.com/f/shire/ee7f53d76c3f8ed4991bdbafdb9b2c90c0aedfef/pics/rating_icons/ic_rating_m@2x.png) 2x) no-repeat;
-    width: 75px;
-    height: 15px;
-    margin: 1px 0 0 0;
-    overflow: hidden;
-    // color:#f50
-}
-.bigstar45 {
-    background-position: 0 -15px;
-}
 .rating_right{
     float: left;
     padding: 10px 0 10px 6px;
@@ -38,6 +20,9 @@ width: 80%;
 .myrate{
     color: #1890ff;
     padding-top: 5px;
+}
+.detail{
+    font-size:14px;
 }
 
 .whenIcomment{   color: gray;
@@ -57,3 +42,60 @@ width: 80%;
 
 
 }
+// .title{
+//   font-size: 20px
+// }
+
+
+
+@media screen and (max-width:@screen-xs){
+
+    .siteHeader{
+        padding: 24px;
+        background-color: #f5f5f5;
+        .name{
+            font-size: 10px !important;
+        }
+      }
+
+
+    .title{
+        font-size: 10px;
+      }
+
+      .detail{
+        font-size:10px;
+    }
+   
+}
+
+@media screen and (max-width:@screen-md){
+
+    .siteHeader{
+        padding: 24px;
+        background-color: #f5f5f5;
+        .name{
+            font-size: 10px !important;
+        }
+      }
+
+      .rankProgress{
+        margin-top: 2px;
+    }
+    .title{
+        font-size: 15px;
+      }
+
+      .rankFont{
+          font-size: 10px;
+      }
+      .detail{
+        font-size:10px;
+    }
+
+    .jianjie{
+        color: #1890ff;
+        font-size: 1em;
+    }
+}
+   

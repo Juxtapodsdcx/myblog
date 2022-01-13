@@ -41,14 +41,21 @@ const Game = () => {
   // })
 
 
-  // 100: {
-  //   style: {
-  //     color: 'black',
-  //   },
-  // label: <strong>豆瓣评分</strong>,
+ const [Mdata,setMdata]=useState({});
 
 
-  // console.log(parseInt((data["5star"])));
+useEffect(()=>{
+  document.title="电影推荐"
+  fetch("/api/api/douban/").then((res)=>res.text()).then((data)=>{
+    console.log(data);
+  })
+
+  fetch("/api/douban/").then((res)=>res.text()).then((data)=>{
+    console.log(data);
+  })
+  
+
+}, [])
 
 
 
@@ -56,88 +63,58 @@ const Game = () => {
 
     <div>
 
-<Card title="影视推荐" bordered={false}>
+      <Card title="影视推荐" bordered={false}>
 
-      <div className={styles.siteHeader}>
-        <PageHeader
-          ghost={false}
-          // onBack={() => window.history.back()}
+        <div className={styles.siteHeader}>
+          <PageHeader
+            ghost={false}
+            // onBack={() => window.history.back()}
             // title="欢迎大家查看电影推荐🤗"
             subTitle=" 欢迎大家查看电影推荐🤗"
-          extra={[
-          ]}
-        >
+            extra={[
+            ]}
+            className={styles.name}
+          >
 
-          <Row>
-            {/* <Statistic title="欢迎大家查看电影推荐🤗" value="欢迎大家查看电影推荐哦🤗" /> */}
-           
-          </Row>
+            <div className={styles.name}>
+            感觉在我心中中国的片子和国外的片子相同水平的情况下，中国影片普遍比国外低，也可能是我多想了或者欣赏水平有问题？
 
+相信大家和我一样，看过太多电影了，影评写不过来，所以就把看过的电影按照豆瓣评分筛选了一下，也可能并不会有人看，但还是把他做出来了。
 
-
-
-          <Descriptions size="small" column={2}>
-
-
-            <Descriptions.Item >
-              感觉在我心中中国的片子和国外的片子相同水平的情况下，中国影片普遍比国外低，也可能是我多想了或者欣赏水平有问题？
-
-              相信大家和我一样，看过太多电影了，影评写不过来，所以就把看过的电影按照豆瓣评分筛选了一下，也可能并不会有人看，但还是把他做出来了。
+            </div>
+         
+          </PageHeader>
+        </div>
 
 
 
-            </Descriptions.Item>
-
-
-
-
-
-          </Descriptions>
-
-
-
-
-
-        </PageHeader>
-
-
-      </div>
-
-
-    
 
 
         <div className={styles.movieList}>
 
           <Row style={{ marginTop: 20, marginLeft: 20 }}>
             <a href={data["url"]}>
-              <p style={{ fontSize: 20 }}>{data["name"]}</p>
+              <p className={styles.title}>{data["name"]}</p>
             </a>
             {/* <div style={{ marginLeft: 50 }}>
               </div> */}
 
           </Row>
-          <Row style={{ marginLeft: 25, marginRight: 25 }}>
-            <Col span={3} style={{ margin: 20 }}>
+
+
+          <Row justify="space-around" className={styles.row}>
+            <Col sm={3} xs={20} style={{ margin: 20 }}>
               <Image src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2684220778.jpg"
               />
 
-
-
-
             </Col>
-            <Col span={12} style={{ margin: 20 }}>
+            <Col sm={12} xs={24} className={styles.title}>
 
-
-
-
-              {/* <Descriptions size="small" column={2}>
-             <Descriptions.Item label="剧情简介">
-              
-               </Descriptions.Item>
-           </ Descriptions> */}
               <h1 className={styles.jianjie}>剧情简介</h1>
+              <div className={styles.detail}>
               {data["jieshao"]}
+
+              </div>
               <Row>
                 <h1 className={styles.myrate}>我的评分&nbsp;&nbsp;&nbsp;</h1>
                 {/* {data["myComment"]} */}
@@ -162,21 +139,30 @@ const Game = () => {
 
             </Col>
 
-            <Col span={5} className={styles.rankAll}>
+            <Col sm={5} xs={0} className={styles.rankAll}>
+              <Row>
+                <h1 className={styles.myrate}>豆瓣评分&nbsp;&nbsp;&nbsp;</h1>
+                {/* {data["myComment"]} */}
+                <Rate disabled defaultValue={data["allLike"]} />
+              </Row>
               <Row className={styles.rankProgress}>
-                五星占比：&nbsp;&nbsp;&nbsp;
-                <Col span={15}>
-                  <Progress percent={parseInt((data["5star"]))} showInfo={false} strokeColor="#87CEFA" />
-                  {/* <Slider marks={marks} defaultValue={parseInt((data["5star"]))} max={100} /> */}
-                </Col>
-
+                <Col xl={9} span={24} className={styles.rankFont}>
+                  五星占比：&nbsp;&nbsp;&nbsp;
+                  </Col >
+                  <Col xl={15} span={24}>
+                    <Progress percent={parseInt((data["5star"]))} showInfo={false} strokeColor="#87CEFA" />
+                    {/* <Slider marks={marks} defaultValue={parseInt((data["5star"]))} max={100} /> */}
+                  </Col>
 
               </Row>
 
               <Row className={styles.rankProgress}>
-                四星占比：&nbsp;&nbsp;&nbsp;
-                <Col span={15}>
-                  <Progress percent={parseInt((data["4star"]))} showInfo={false} />
+
+                <Col xl={9} span={24} className={styles.rankFont}>
+                  四星占比：&nbsp;&nbsp;&nbsp;
+                </Col>
+                <Col xl={15} span={24}>
+                  <Progress percent={parseInt((data["4star"]))} showInfo={false} strokeColor="#87CEFA" />
 
                   {/* <Slider marks={marks} defaultValue={parseInt((data["4star"]))} max={100} /> */}
                 </Col>
@@ -185,9 +171,13 @@ const Game = () => {
               </Row>
 
               <Row className={styles.rankProgress}>
-                三星占比：&nbsp;&nbsp;&nbsp;
-                <Col span={15}>
-                  <Progress percent={parseInt((data["3star"]))} showInfo={false} />
+
+                <Col xl={9} span={24} className={styles.rankFont}>
+                  三星占比：&nbsp;&nbsp;&nbsp;
+                </Col>
+                <Col xl={15} span={24}>
+
+                  <Progress percent={parseInt((data["3star"]))} showInfo={false} strokeColor="#87CEFA" />
 
                   {/* <Slider marks={marks} defaultValue={parseInt((data["3star"]))} max={100} /> */}
                 </Col>
@@ -196,9 +186,13 @@ const Game = () => {
               </Row>
 
               <Row className={styles.rankProgress}>
-                两星占比：&nbsp;&nbsp;&nbsp;
-                <Col span={15}>
-                  <Progress percent={parseInt((data["2star"]))} showInfo={false} />
+
+                <Col xl={9} span={24} className={styles.rankFont}>
+
+                  两星占比：&nbsp;&nbsp;&nbsp;
+                </Col>
+                <Col xl={15} span={24}>
+                  <Progress percent={parseInt((data["2star"]))} showInfo={false} strokeColor="#87CEFA" />
 
                   {/* <Slider marks={marks} defaultValue={parseInt((data["2star"]))} max={100} /> */}
                 </Col>
@@ -207,9 +201,12 @@ const Game = () => {
               </Row>
 
               <Row className={styles.rankProgress}>
-                一星占比：&nbsp;&nbsp;&nbsp;
-                <Col span={15}>
-                  <Progress percent={parseInt((data["1star"]))} showInfo={false} />
+
+                <Col xl={9} span={24} className={styles.rankFont}>
+                  一星占比：&nbsp;&nbsp;&nbsp;
+                </Col>
+                <Col xl={15} span={24}>
+                  <Progress percent={parseInt((data["1star"]))} showInfo={false} strokeColor="#87CEFA" />
                   {/* <Slider marks={marks} defaultValue={parseInt((data["1star"]))} max={100} /> */}
                 </Col>
 
@@ -225,11 +222,7 @@ const Game = () => {
 
 
               </Row>
-              <Row>
-                <h1 className={styles.myrate}>豆瓣评分&nbsp;&nbsp;&nbsp;</h1>
-                {/* {data["myComment"]} */}
-                <Rate disabled defaultValue={data["allLike"]} />
-              </Row>
+
 
 
 

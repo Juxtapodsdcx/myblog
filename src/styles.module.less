@@ -1,11 +1,75 @@
 // @import url(antd/dist/antd.css);
-.menu:hover{
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: transparent;
-    // content: '';
+// .menu:hover{
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     background-color: transparent;
+//     // content: '';
 
+// }
+// Media queries breakpoints
+// @screen-xs and @screen-xs-min is not used in Grid
+// smallest break point is @screen-md
+@screen-xs: 480px;
+@screen-xs-min: @screen-xs;
+// 👆 Extra small screen / phone
+
+// 👇 Small screen / tablet
+@screen-sm: 576px;
+@screen-sm-min: @screen-sm;
+
+// Medium screen / desktop
+@screen-md: 768px;
+@screen-md-min: @screen-md;
+
+// Large screen / wide desktop
+@screen-lg: 992px;
+@screen-lg-min: @screen-lg;
+
+// Extra large screen / full hd
+@screen-xl: 1200px;
+@screen-xl-min: @screen-xl;
+
+// Extra extra large screen / large desktop
+@screen-xxl: 1600px;
+@screen-xxl-min: @screen-xxl;
+
+// provide a maximum
+@screen-xs-max: (@screen-sm-min - 1px);
+@screen-sm-max: (@screen-md-min - 1px);
+@screen-md-max: (@screen-lg-min - 1px);
+@screen-lg-max: (@screen-xl-min - 1px);
+@screen-xl-max: (@screen-xxl-min - 1px);
+
+.header{
+    padding-left: 50px;
+    background:white 
+}
+.content{
+    padding:0 50px;
+}
+.popover:hover{
+    cursor:pointer
+}
+.icon{
+font-size:20px;
+margin:0px 8px;
+}
+
+
+@media screen and (max-width:@screen-md) {
+    .content{
+        padding:0px 0px;
+    }
+    .header{
+        font-size: 0px;
+    }
+}
+@media screen and (max-width:@screen-xs){
+    .header{
+        padding-left: 0px;
+        background:white 
+    }
 }
