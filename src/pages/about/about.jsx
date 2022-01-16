@@ -44,11 +44,11 @@ const About = () => {
 
 <Descriptions column={3}>
   
-  <Descriptions.Item label="B站"><a target="_blank" href='https://space.bilibili.com/172183887'>UID:172183887</a>
+  <Descriptions.Item label="B站"><a target="_blank" rel="noopener" href='https://space.bilibili.com/172183887'>UID:172183887</a>
   
   </Descriptions.Item>
   <Descriptions.Item label="邮箱">  <MailFilled />  1571396031@qq.com</Descriptions.Item>
-  <Descriptions.Item label="Github"><a target="_blank" href='https://github.com/ZhouQianruYeah'>    <GithubFilled />  https://github.com/ZhouQianruYeah</a></Descriptions.Item>
+  <Descriptions.Item label="Github"><a target="_blank" rel="noopener" href='https://github.com/ZhouQianruYeah'>    <GithubFilled />  https://github.com/ZhouQianruYeah</a></Descriptions.Item>
   
   
   

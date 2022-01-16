@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
 // import ReactMarkdown from 'react-markdown'
-import ReactDom from 'react-dom'
+// import ReactDom from 'react-dom'
 import { Col, Row, Image, Card, Typography } from "antd"
 // import {Link} from "react-router-dom"
 
@@ -99,7 +99,7 @@ let pic2 = []
 <Row >
                     <Col span={12} >
                         <div style={{textAlign:"center"}}>
-                        <a className={styles.button} href={"https://baike.baidu.com/item/"+data["data"][0]} target="_blank">See more info</a>
+                        <a className={styles.button} href={"https://baike.baidu.com/item/"+data["data"][0]} target="_blank" rel="noopener">See more info</a>
 
                         </div>
 

@@ -1,70 +1,160 @@
 
-import { Card, Divider, Col, Row, Descriptions, Steps, Image, Carousel, Slider, PageHeader, Statistic, Progress } from 'antd';
-import React, { useState, useEffect } from 'react';
+import { Card, Col, Row, Image, PageHeader, Progress, Tabs, Pagination, Skeleton } from 'antd';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from "./styles.module.less";
 // import { QqOutlined, GithubFilled, MailFilled } from '@ant-design/icons'
-import Markdown from "react-markdown"
-import { Layout, Menu, Breadcrumb } from 'antd';
+// import Markdown from "react-markdown"
+import { Layout, Menu } from 'antd';
 import { Rate } from 'antd';
 
-// import { RedditOutlined, CrownOutlined, SmileOutlined } from '@ant-design/icons';
+const { TabPane } = Tabs;
 
-import ReactMarkdown from 'react-markdown';
-
-const { Step } = Steps;
-
-const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+const Movie = () => {
 
 
 
-const Game = () => {
-  const data = {
-    'name': '无耻之徒(美版) 第十一季 Shameless Season 11',
-    'nameE': 'Shameless',
-    'whenIcomment': '2020-12-18',
-    'imgurl': 'https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2684220778.jpg',
-    'url': 'https://movie.douban.com/subject/34948243/',
-    'jieshao': '历经了千年的繁华，巍峨帝都早已从内部腐烂，拥有邪魔灵魂的统治者，正引领文明走向毁灭。为了解除村庄的困境，拥有绝赞剑术的少年塔兹米（齐藤壮马 配音）独闯帝都。此时帝都至高无上的皇帝还只是不谙世事的孩子，国家的实际操纵者大臣只手遮天，是帝都腐朽的根源。历经一波三折，塔兹米被曾经骗过自己的雷欧奈（浅川悠 配音）强行拉入一个神秘组织Night Raid。Night Raid是一支令帝都所有权贵富贾闻风丧胆的暗杀集团，他们是革命军下辖的秘密特殊部队，其最终目标是颠覆大臣的统治。在娜杰塔（水野理纱 配音）的领导下，赤瞳（雨宫天 配音）、雷欧奈等绝世高手云集其下。塔兹米的命运由此发生转折，而接二连三更大的纷争则将其引向未知的彼方……\n本片根据タカヒロ（原作）、田代哲也（原画）的漫画改编。',
-    '1star': '0.6%',
-    '2star': '0.3%',
-    '3star': '2.4%',
-    '4star': '10.9%',
-    '5star': '85.9%',
-    'allLike': '9.6',
-    'betterThan': '73% 爱情片',
-    'myComment': '5'
-  }
-  // console.log(styles);
-  // fetch("https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2684220778.jpg").then((data)=>{
-  //   console.log(data);
-  // })
+  const [Mdata, setMdata] = useState([]);
+  const [MdataPage, setMdataPage] = useState([]);
+  const [type, setType] = useState(1);
+  const textInput = useRef([]);
+
+  const [current, setCurrent] = useState(1);
+  const pageSize = 10;
+  let page = []
 
 
- const [Mdata,setMdata]=useState({});
 
 
-useEffect(()=>{
-  document.title="电影推荐"
-  fetch("/api/api/douban/").then((res)=>res.text()).then((data)=>{
-    console.log(data);
-  })
+  useEffect(() => {
 
-  fetch("/api/douban/").then((res)=>res.text()).then((data)=>{
-    console.log(data);
-  })
+    fetch("/api/when/").then((res) => res.json()).then((data) => {
+      textInput.current.push(data["data"]);
+      // console.log( textInput);
 
-  fetch("/api/api/douban/").then((res)=>res.json()).then((data)=>{
-    console.log(data);
-  })
+    }).then(()=>{
+      fetch("/api/douban/").then((res) => res.json()).then((data) => {
+        // data2= data["data"];
+  
+        textInput.current.push(data["data"]);
+        // console.log( textInput);
+        // console.log( data2);
+  
+  
+      }).then(()=>{
+        fetch("/api/me/").then((res) => res.json()).then((data) => {
+          // setMdata(data["data"])
+          // data3=data["data"];
+          textInput.current.push(data["data"]);
+          
+          // console.log( data3);
+    
+        }).then(()=>{
+          if (type === 1 &&textInput.current) {
+            console.log(textInput.current);
+      
+            setMdata(textInput.current[0]);
+      
+          }
+          else if (type === 2 &&textInput.current) {
+      
+            setMdata(textInput.current[1]);
+      
+          }
+          else if (type === 3 &&textInput.current) {
+      
+            setMdata(textInput.current[2]);
+      
+          }
+        });
+      })
+  
+    })
 
-  fetch("/api/douban/").then((res)=>res.json()).then((data)=>{
-    console.log(data);
-  })
-  // "proxy":"http://localhost:8000"
+
+
   
 
-}, [])
+
+
+  }, [])
+
+  useEffect(() => {
+
+    console.log("type改变了");
+    console.log(type);
+    // console.log(textInput.current);
+
+    if (type == 1 &&textInput.current) {
+      // console.log(type);
+      // console.log(textInput.current[0]);
+      setMdata(textInput.current[0]);
+
+    }
+    else if (type == 2 &&textInput.current) {
+      // console.log(type);
+
+      setMdata(textInput.current[1]);
+
+    }
+    else if (type == 3 &&textInput.current) {
+      // console.log(type);
+      setMdata(textInput.current[2]);
+    }
+
+
+  }, [type])
+
+  useEffect(() => {
+    console.log("Mdata 改变了");
+    console.log(Mdata);
+    // console.log(textInput);
+
+    if (Mdata&&Mdata.length != 0) {
+
+      for (let i = (current - 1) * 10; i < pageSize + (current - 1) * 10; i++) {
+        page.push(Mdata[i]);
+      }
+      setMdataPage(page);
+    }
+
+  }, [Mdata])
+
+  useEffect(() => {
+    console.log("MdataPage 改变了");
+    console.log(MdataPage);
+  }, [MdataPage])
+
+  const onChange = (current) => {
+
+    page = [];
+    setCurrent(current);
+    // console.log(current);
+    for (let i = (current - 1) * 10; i < pageSize + (current - 1) * 10; i++) {
+      page.push(Mdata[i]);
+    }
+    setMdataPage(page);
+  }
+
+
+
+  const handleClick = (activeKey) => {
+    // console.log(activeKey);
+    setType(activeKey);
+    // if (activeKey === 1) {
+    //   setType(1)
+    //   console.log(type);
+
+    // } else if (activeKey === 2) {
+    //   setType(2)
+    //   console.log(type);
+
+    // } else {
+    //   setType(3)
+    //   console.log(type);
+    // }
+
+  }
+
 
 
 
@@ -86,170 +176,166 @@ useEffect(()=>{
           >
 
             <div className={styles.name}>
-            感觉在我心中中国的片子和国外的片子相同水平的情况下，中国影片普遍比国外低，也可能是我多想了或者欣赏水平有问题？
-
-相信大家和我一样，看过太多电影了，影评写不过来，所以就把看过的电影按照豆瓣评分筛选了一下，也可能并不会有人看，但还是把他做出来了。
+              感觉在我心中中国的片子和国外的片子相同水平的情况下，中国影片普遍比国外低，也可能是我多想了或者欣赏水平有问题？
+              相信大家和我一样，看过太多电影了，影评写不过来，所以就把看过的电影按照豆瓣评分筛选了一下，也可能并不会有人看，但还是把他做出来了。
 
             </div>
-         
+
           </PageHeader>
         </div>
+        <Tabs defaultActiveKey="1" onTabClick={handleClick}>
+          <TabPane tab="默认排序" key="1" >
+            {/* Content of Tab Pane 1 */}
+          </TabPane>
+          <TabPane tab="豆瓣评分排序" key="2" >
+            {/* Content of Tab Pane 2 */}
+          </TabPane>
+          <TabPane tab="个人评分排序" key="3">
+            {/* Content of Tab Pane 3 */}
+          </TabPane>
+        </Tabs>
 
 
 
 
+        {!MdataPage ? <Skeleton /> : MdataPage.map((data, index) => {
+          return (
 
-        <div className={styles.movieList}>
+            <div className={styles.movieList} key={index}>
 
-          <Row style={{ marginTop: 20, marginLeft: 20 }}>
-            <a href={data["url"]}>
-              <p className={styles.title}>{data["name"]}</p>
-            </a>
-            {/* <div style={{ marginLeft: 50 }}>
-              </div> */}
-
-          </Row>
-
-
-          <Row justify="space-around" className={styles.row}>
-            <Col sm={3} xs={20} style={{ margin: 20 }}>
-              <Image src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2684220778.jpg"
-              />
-
-            </Col>
-            <Col sm={12} xs={24} className={styles.title}>
-
-              <h1 className={styles.jianjie}>剧情简介</h1>
-              <div className={styles.detail}>
-              {data["jieshao"]}
-
-              </div>
-              <Row>
-                <h1 className={styles.myrate}>我的评分&nbsp;&nbsp;&nbsp;</h1>
-                {/* {data["myComment"]} */}
-                <Rate disabled defaultValue={data["myComment"]} />
-              </Row>
-
-              <Row>
-                {/* <h1  className={styles.myrate}></h1> */}
-                <div className={styles.whenIcomment}>
-                  评价时间&nbsp;&nbsp;&nbsp;{data["whenIcomment"]}
-
-                </div>
-
-
-
+              <Row style={{ marginTop: 20, marginLeft: 20 }}>
+                <a href={data["url"]}>
+                  <p className={styles.title}>{data["name"]}</p>
+                </a>
               </Row>
 
 
+              <Row justify="space-around" className={styles.row}>
+                <Col sm={3} xs={20} style={{ margin: 20 }}>
+                  <Image src={data["imgurl"]}
+                  />
 
-
-
-
-            </Col>
-
-            <Col sm={5} xs={0} className={styles.rankAll}>
-              <Row>
-                <h1 className={styles.myrate}>豆瓣评分&nbsp;&nbsp;&nbsp;</h1>
-                {/* {data["myComment"]} */}
-                <Rate disabled defaultValue={data["allLike"]} />
-              </Row>
-              <Row className={styles.rankProgress}>
-                <Col xl={9} span={24} className={styles.rankFont}>
-                  五星占比：&nbsp;&nbsp;&nbsp;
-                  </Col >
-                  <Col xl={15} span={24}>
-                    <Progress percent={parseInt((data["5star"]))} showInfo={false} strokeColor="#87CEFA" />
-                    {/* <Slider marks={marks} defaultValue={parseInt((data["5star"]))} max={100} /> */}
-                  </Col>
-
-              </Row>
-
-              <Row className={styles.rankProgress}>
-
-                <Col xl={9} span={24} className={styles.rankFont}>
-                  四星占比：&nbsp;&nbsp;&nbsp;
                 </Col>
-                <Col xl={15} span={24}>
-                  <Progress percent={parseInt((data["4star"]))} showInfo={false} strokeColor="#87CEFA" />
+                <Col sm={12} xs={24} className={styles.title}>
 
-                  {/* <Slider marks={marks} defaultValue={parseInt((data["4star"]))} max={100} /> */}
+                  <h1 className={styles.jianjie}>剧情简介</h1>
+                  <div className={styles.detail}>
+                    {data["jieshao"]}
+
+                  </div>
+                  <Row>
+                    <h1 className={styles.myrate}>我的评分&nbsp;&nbsp;&nbsp;</h1>
+
+                    <Rate disabled defaultValue={data["myComment"]} />
+                  </Row>
+
+                  <Row>
+
+                    <div className={styles.whenIcomment}>
+                      评价时间&nbsp;&nbsp;&nbsp;{data["whenIcomment"]}
+
+                    </div>
+
+
+
+                  </Row>
+
                 </Col>
 
+                <Col sm={5} xs={0} className={styles.rankAll}>
+                  <Row>
+                    <h1 className={styles.myrate}>豆瓣评分&nbsp;&nbsp;&nbsp;</h1>
+
+                    <Rate disabled defaultValue={data["allLike"]} />
+                  </Row>
+                  <Row className={styles.rankProgress}>
+                    <Col xl={9} span={24} className={styles.rankFont}>
+                      五星占比：&nbsp;&nbsp;&nbsp;
+                    </Col >
+                    <Col xl={15} span={24}>
+                      <Progress percent={parseInt((data["5star"]))} showInfo={false} strokeColor="#87CEFA" />
+                    </Col>
+
+                  </Row>
+
+                  <Row className={styles.rankProgress}>
+
+                    <Col xl={9} span={24} className={styles.rankFont}>
+                      四星占比：&nbsp;&nbsp;&nbsp;
+                    </Col>
+                    <Col xl={15} span={24}>
+                      <Progress percent={parseInt((data["4star"]))} showInfo={false} strokeColor="#87CEFA" />
+
+                    </Col>
+
+
+                  </Row>
+
+                  <Row className={styles.rankProgress}>
+
+                    <Col xl={9} span={24} className={styles.rankFont}>
+                      三星占比：&nbsp;&nbsp;&nbsp;
+                    </Col>
+                    <Col xl={15} span={24}>
+
+                      <Progress percent={parseInt((data["3star"]))} showInfo={false} strokeColor="#87CEFA" />
+
+                    </Col>
+
+
+                  </Row>
+
+                  <Row className={styles.rankProgress}>
+
+                    <Col xl={9} span={24} className={styles.rankFont}>
+
+                      两星占比：&nbsp;&nbsp;&nbsp;
+                    </Col>
+                    <Col xl={15} span={24}>
+                      <Progress percent={parseInt((data["2star"]))} showInfo={false} strokeColor="#87CEFA" />
+
+                    </Col>
+
+
+                  </Row>
+
+                  <Row className={styles.rankProgress}>
+
+                    <Col xl={9} span={24} className={styles.rankFont}>
+                      一星占比：&nbsp;&nbsp;&nbsp;
+                    </Col>
+                    <Col xl={15} span={24}>
+                      <Progress percent={parseInt((data["1star"]))} showInfo={false} strokeColor="#87CEFA" />
+                    </Col>
+
+
+                  </Row>
+
+                  <Row className={styles.rankProgress}>
+
+                    <div className={styles.whenIcomment}>
+                      好于：{data["betterThan"]}
+
+                    </div>
+                  </Row>
+                </Col>
+
 
               </Row>
 
-              <Row className={styles.rankProgress}>
+            </div>
 
-                <Col xl={9} span={24} className={styles.rankFont}>
-                  三星占比：&nbsp;&nbsp;&nbsp;
-                </Col>
-                <Col xl={15} span={24}>
+          )
 
-                  <Progress percent={parseInt((data["3star"]))} showInfo={false} strokeColor="#87CEFA" />
+        })}
 
-                  {/* <Slider marks={marks} defaultValue={parseInt((data["3star"]))} max={100} /> */}
-                </Col>
-
-
-              </Row>
-
-              <Row className={styles.rankProgress}>
-
-                <Col xl={9} span={24} className={styles.rankFont}>
-
-                  两星占比：&nbsp;&nbsp;&nbsp;
-                </Col>
-                <Col xl={15} span={24}>
-                  <Progress percent={parseInt((data["2star"]))} showInfo={false} strokeColor="#87CEFA" />
-
-                  {/* <Slider marks={marks} defaultValue={parseInt((data["2star"]))} max={100} /> */}
-                </Col>
-
-
-              </Row>
-
-              <Row className={styles.rankProgress}>
-
-                <Col xl={9} span={24} className={styles.rankFont}>
-                  一星占比：&nbsp;&nbsp;&nbsp;
-                </Col>
-                <Col xl={15} span={24}>
-                  <Progress percent={parseInt((data["1star"]))} showInfo={false} strokeColor="#87CEFA" />
-                  {/* <Slider marks={marks} defaultValue={parseInt((data["1star"]))} max={100} /> */}
-                </Col>
-
-
-              </Row>
-
-              <Row className={styles.rankProgress}>
-
-                <div className={styles.whenIcomment}>
-                  好于：{data["betterThan"]}
-
-                </div>
-
-
-              </Row>
-
-
-
-
-
-
-            </Col>
-
-
-
-
-
-
-
-
-
-          </Row>
+        <div style={{ textAlign: "center" }}>
+          <Pagination defaultCurrent={1} total={272} current={current} onChange={onChange} pageSize={10} />
 
         </div>
+
+
+
 
 
       </Card>
@@ -269,4 +355,4 @@ useEffect(()=>{
 
 }
 
-export default Game
+export default Movie

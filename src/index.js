@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Link, Routes, Route, BrowserRouter } from "react-router-dom"
 import Mainpage from "./pages/mainpage/mainpage"
 import Game, { GameRoute } from "./pages/gameRecommand/game"
-import About from "./pages/about/about"
+// import About from "./pages/about/about"
 import styles from "./styles.module.less"
 import Idol from "./pages/idols/idol"
 import Movie from "./pages/movieRecomand/movie"
@@ -45,11 +45,11 @@ const content = (
             
             </div>
             <div style={{display:'inline-block'}}>
-            <a target="_blank" href='https://space.bilibili.com/172183887'><YoutubeOutlined className={styles.icon}/></a>
-<a target="_blank" href='mailto:1571396031@qq.com'>
+            <a target="_blank" href='https://space.bilibili.com/172183887' rel="noopener"><YoutubeOutlined className={styles.icon}/></a>
+<a target="_blank" href='mailto:1571396031@qq.com' rel="noopener">
 <MailFilled className={styles.icon}/> 
 </a>
-<a target="_blank" href='https://github.com/ZhouQianruYeah'>    <GithubFilled className={styles.icon}/></a>
+<a target="_blank" href='https://github.com/ZhouQianruYeah' rel="noopener">    <GithubFilled className={styles.icon}/></a>
 
             </div>
 
@@ -138,6 +138,7 @@ ReactDOM.render(
 
                 <Route path="/idol/*" element={<Idol />} />
                 {/* <Route path="/about" element={<About />} /> */}
+                
 
 
               </Routes>

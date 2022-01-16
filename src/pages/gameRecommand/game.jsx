@@ -1,11 +1,11 @@
 
-import { Card, Divider, Col, Row, Descriptions, Steps, Image, Carousel, PageHeader, Statistic, Skeleton } from 'antd';
+import { Card, Divider, Col, Row, Descriptions, Steps, Image, Carousel, PageHeader,  Skeleton } from 'antd';
 import React, { useState, useEffect } from 'react';
 import styles from "./styles.module.less";
-import { Link, Routes, Route, BrowserRouter } from "react-router-dom"
+import { Link, Routes, Route } from "react-router-dom"
 // import { QqOutlined, GithubFilled, MailFilled } from '@ant-design/icons'
 import Markdown from "react-markdown"
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu} from 'antd';
 // import { RedditOutlined, CrownOutlined, SmileOutlined } from '@ant-design/icons';
 import tuiliSrc from "./tuili.md"
 import yuleSrc from "./yule.md"
