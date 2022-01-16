@@ -53,6 +53,15 @@ useEffect(()=>{
   fetch("/api/douban/").then((res)=>res.text()).then((data)=>{
     console.log(data);
   })
+
+  fetch("/api/api/douban/").then((res)=>res.json()).then((data)=>{
+    console.log(data);
+  })
+
+  fetch("/api/douban/").then((res)=>res.json()).then((data)=>{
+    console.log(data);
+  })
+  // "proxy":"http://localhost:8000"
   
 
 }, [])
