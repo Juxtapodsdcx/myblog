@@ -1,8 +1,8 @@
 
-import { Carousel, Card, Divider, Col, Row, Button, Image, Descriptions, PageHeader } from 'antd';
+import { Carousel, Card, Divider, Col, Row,  Image} from 'antd';
 import React ,{useEffect} from 'react';
 import styles from "./styles.module.less";
-import { QqOutlined, GithubFilled, MailFilled } from '@ant-design/icons'
+// import { QqOutlined, GithubFilled, MailFilled } from '@ant-design/icons'
 import {Link} from "react-router-dom"
 
 

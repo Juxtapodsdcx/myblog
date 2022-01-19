@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styles from "./styles.module.less";
 // import { QqOutlined, GithubFilled, MailFilled } from '@ant-design/icons'
 // import Markdown from "react-markdown"
-import { Layout, Menu } from 'antd';
+// import { Layout, Menu } from 'antd';
 import { Rate } from 'antd';
 
 const { TabPane } = Tabs;
@@ -27,7 +27,11 @@ const Movie = () => {
 
   useEffect(() => {
 
+    // fetch("/api/when/").then((res) => res.json()).then((data) => {
+
     fetch("/api/when/").then((res) => res.json()).then((data) => {
+
+      
       textInput.current.push(data["data"]);
       // console.log( textInput);
 
@@ -50,7 +54,7 @@ const Movie = () => {
     
         }).then(()=>{
           if (type === 1 &&textInput.current) {
-            console.log(textInput.current);
+            // console.log(textInput.current);
       
             setMdata(textInput.current[0]);
       
@@ -70,18 +74,12 @@ const Movie = () => {
   
     })
 
-
-
-  
-
-
-
   }, [])
 
   useEffect(() => {
 
-    console.log("type改变了");
-    console.log(type);
+    // console.log("type改变了");
+    // console.log(type);
     // console.log(textInput.current);
 
     if (type == 1 &&textInput.current) {
@@ -105,8 +103,8 @@ const Movie = () => {
   }, [type])
 
   useEffect(() => {
-    console.log("Mdata 改变了");
-    console.log(Mdata);
+    // console.log("Mdata 改变了");
+    // console.log(Mdata);
     // console.log(textInput);
 
     if (Mdata&&Mdata.length != 0) {
@@ -120,8 +118,8 @@ const Movie = () => {
   }, [Mdata])
 
   useEffect(() => {
-    console.log("MdataPage 改变了");
-    console.log(MdataPage);
+    // console.log("MdataPage 改变了");
+    // console.log(MdataPage);
   }, [MdataPage])
 
   const onChange = (current) => {
@@ -198,7 +196,7 @@ const Movie = () => {
 
 
 
-        {!MdataPage ? <Skeleton /> : MdataPage.map((data, index) => {
+        {!(MdataPage&&MdataPage.length) ? <Skeleton /> : MdataPage.map((data, index) => {
           return (
 
             <div className={styles.movieList} key={index}>

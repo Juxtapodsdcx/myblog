@@ -3,24 +3,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, Routes, Route, BrowserRouter } from "react-router-dom"
 import Mainpage from "./pages/mainpage/mainpage"
-import Game, { GameRoute } from "./pages/gameRecommand/game"
+import Game from "./pages/gameRecommand/game"
 // import About from "./pages/about/about"
 import styles from "./styles.module.less"
 import Idol from "./pages/idols/idol"
 import Movie from "./pages/movieRecomand/movie"
-import { EllipsisOutlined,MailFilled,YoutubeOutlined,GithubOutlined,GithubFilled} from "@ant-design/icons"
+import { EllipsisOutlined,MailFilled,YoutubeOutlined,GithubFilled} from "@ant-design/icons"
 import { Popover } from 'antd';
 
 // import Routers from './pages/routerConfig';
-import { Button, Descriptions } from 'antd';
+// import { Button, Descriptions } from 'antd';
 
-import { Layout, Menu, Breadcrumb, Row, Col,Divider } from 'antd';
+import { Layout, Menu, Row, Col,Divider } from 'antd';
 // import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 
-const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+// const { SubMenu } = Menu;
+const { Header, Content, Footer } = Layout;
 
-const ReactMarkdown = require('react-markdown')
+// const ReactMarkdown = require('react-markdown')
 // console.log(Tuili);
 
 
@@ -45,11 +45,11 @@ const content = (
             
             </div>
             <div style={{display:'inline-block'}}>
-            <a target="_blank" href='https://space.bilibili.com/172183887' rel="noopener"><YoutubeOutlined className={styles.icon}/></a>
-<a target="_blank" href='mailto:1571396031@qq.com' rel="noopener">
+            <a target="_blank" rel="noopener" href='https://space.bilibili.com/172183887' ><YoutubeOutlined className={styles.icon}/></a>
+<a target="_blank" rel="noopener" href='mailto:1571396031@qq.com' rel="noopener">
 <MailFilled className={styles.icon}/> 
 </a>
-<a target="_blank" href='https://github.com/ZhouQianruYeah' rel="noopener">    <GithubFilled className={styles.icon}/></a>
+<a target="_blank"  rel="noopener" href='https://github.com/ZhouQianruYeah'>    <GithubFilled className={styles.icon}/></a>
 
             </div>
 
